@@ -1,0 +1,76 @@
+{
+  "name": "nuxt-parley",
+  "version": "0.1.0",
+  "description": "Nuxt module for vue-parley: a drop-in chat and video-call UI, wired into Pinia and i18n for you.",
+  "license": "MIT",
+  "author": "SaeedP11 <saeed_abdi.p11@outlook.com>",
+  "type": "module",
+  "keywords": [
+    "nuxt",
+    "nuxt-module",
+    "chat",
+    "messaging",
+    "webrtc",
+    "video-call",
+    "vue-parley"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.mts",
+      "import": "./dist/module.mjs"
+    }
+  },
+  "main": "./dist/module.mjs",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/types.d.mts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "typecheck": "vue-tsc --noEmit && nuxi typecheck playground"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^4.5.2",
+    "@pinia/nuxt": "^1.0.2",
+    "@vueuse/core": "^14.2.1",
+    "pinia": "^4.0.3",
+    "vue-i18n": "^11.4.5",
+    "vue-parley": "^3.1.0"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^3.4.2",
+    "@nuxt/eslint-config": "^1.17.0",
+    "@nuxt/module-builder": "^1.0.3",
+    "@nuxt/schema": "^4.5.2",
+    "@nuxt/test-utils": "^4.3.2",
+    "@nuxtjs/i18n": "^10.6.0",
+    "@types/node": "^22.10.0",
+    "eslint": "^10.10.0",
+    "nuxt": "^4.5.2",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.1",
+    "vue-tsc": "^3.3.11"
+  },
+  "pnpm": {
+    "overrides": {
+      "vue-parley": "file:../vue-parley"
+    },
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild",
+      "unrs-resolver"
+    ]
+  }
+}
