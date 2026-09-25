@@ -61,11 +61,12 @@
     "nuxt": "^4.5.2",
     "typescript": "^5.9.3",
     "vitest": "^5.0.1",
+    "vue": "^3.5.43",
     "vue-tsc": "^3.3.11"
   },
   "pnpm": {
     "overrides": {
-      "vue-parley": "file:../vue-parley"
+      "vue-parley": "link:../vue-parley"
     },
     "onlyBuiltDependencies": [
       "@parcel/watcher",

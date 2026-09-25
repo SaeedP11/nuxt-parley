@@ -165,15 +165,31 @@ pnpm typecheck
 
 The playground (`playground/`) runs on vue-parley's in-memory backend with `@nuxtjs/i18n` (Persian and English). Open it in two tabs with different `?user=` values (the header has a link), open the same conversation in both and start a call to try video calling.
 
-### vue-parley from the sibling folder
+### Developing against a local vue-parley
 
-Until vue-parley 3.1 is on the registry, `package.json` overrides it with `file:../vue-parley`:
+The module depends on the published `vue-parley` (`^3.1.0`), but for development `package.json` links the checkout next to this one, so both can change together:
 
 ```json
-"pnpm": { "overrides": { "vue-parley": "file:../vue-parley" } }
+"pnpm": { "overrides": { "vue-parley": "link:../vue-parley" } }
 ```
 
-`file:` installs a copy, which resolves vue-parley's peers (Vue, Pinia, vue-i18n) from this project, so there is one copy of each. After changing vue-parley, run `pnpm build` there and `pnpm install --force` here. Remove the override once vue-parley is published.
+Overrides only apply when installing this repository; the published module still depends on the registry version.
+
+With both repositories side by side:
+
+```bash
+# in ../vue-parley: rebuild dist/ on every change
+pnpm dev
+
+# here
+pnpm dev
+```
+
+Each rebuild of vue-parley reloads the playground; no reinstall needed.
+
+A linked package resolves its imports from its own `node_modules`, which has its own Vue, Pinia and vue-i18n (vue-parley's dev dependencies). Two copies of Pinia in one app means two sets of stores, so `playground/nuxt.config.ts` dedupes `vue`, `pinia`, `vue-i18n` and `@vueuse/core` to this project's copies (in Vite, and through tsconfig `paths` for the typechecker), and allows Vite to serve files from `../vue-parley`. That is also why `vue` is a dev dependency here: dedupe resolves from this project.
+
+To work against the published version instead, remove the override and run `pnpm install`. vue-parley is published to `https://npm.sp11.ir`, so that registry has to be configured (for example `registry=https://npm.sp11.ir` in your user `.npmrc`).
 
 ## License
 
