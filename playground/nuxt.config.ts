@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 
-// Packages the linked vue-parley would otherwise load a second copy of (see below).
+// Packages a linked vue-parley would otherwise load a second copy of (see below).
 const DEDUPE = ['vue', 'pinia', 'vue-i18n', '@vueuse/core', 'primevue']
 
 export default defineNuxtConfig({
@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   compatibilityDate: 'latest',
 
-  // vue-parley is linked from ../vue-parley (see "Developing against a local vue-parley" in the
+  // vue-parley can be linked from ../vue-parley (see "Developing against a local vue-parley" in the
   // README). A linked package resolves imports from its own node_modules, which has its own Vue,
   // Pinia, vue-i18n and PrimeVue; two of those in one app means two sets of stores, and components
   // that never see the app's PrimeVue config. Deduping makes every import use this project's

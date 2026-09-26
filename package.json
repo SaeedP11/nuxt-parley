@@ -74,9 +74,6 @@
     "vue-tsc": "^3.3.11"
   },
   "pnpm": {
-    "overrides": {
-      "vue-parley": "link:../vue-parley"
-    },
     "onlyBuiltDependencies": [
       "@parcel/watcher",
       "esbuild",

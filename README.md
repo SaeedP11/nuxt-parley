@@ -175,7 +175,7 @@ The playground (`playground/`) runs on vue-parley's in-memory backend with `@nux
 
 ### Developing against a local vue-parley
 
-The module depends on the published `vue-parley` (`^4.0.0`), but for development `package.json` links the checkout next to this one, so both can change together:
+The module depends on the published `vue-parley` (`^4.0.0`) from npm. To change both together, link the checkout next to this one by adding an override to `package.json` and running `pnpm install`:
 
 ```json
 "pnpm": { "overrides": { "vue-parley": "link:../vue-parley" } }
@@ -197,7 +197,7 @@ Each rebuild of vue-parley reloads the playground; no reinstall needed.
 
 A linked package resolves its imports from its own `node_modules`, which has its own Vue, Pinia, vue-i18n and PrimeVue (vue-parley's dev dependencies). Two copies of Pinia in one app means two sets of stores, and a second PrimeVue never sees the app's theme, so `playground/nuxt.config.ts` dedupes `vue`, `pinia`, `vue-i18n`, `@vueuse/core` and `primevue` to this project's copies (in Vite, and through tsconfig `paths` for the typechecker), and allows Vite to serve files from `../vue-parley`. That is also why `vue` and `primevue` are dev dependencies here: dedupe resolves from this project.
 
-To work against the published version instead, remove the override and run `pnpm install`. vue-parley is published to `https://npm.sp11.ir`, so that registry has to be configured (for example `registry=https://npm.sp11.ir` in your user `.npmrc`).
+To go back to the published version, remove the override and run `pnpm install` again.
 
 ## License
 
