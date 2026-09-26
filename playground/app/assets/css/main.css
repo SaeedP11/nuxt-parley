@@ -1,0 +1,3 @@
+/* The playground's own Tailwind. The chat brings its own precompiled, scoped stylesheet. */
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));

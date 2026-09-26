@@ -12,7 +12,8 @@
     "messaging",
     "webrtc",
     "video-call",
-    "vue-parley"
+    "vue-parley",
+    "primevue"
   ],
   "exports": {
     ".": {
@@ -47,7 +48,10 @@
     "@vueuse/core": "^14.2.1",
     "pinia": "^4.0.3",
     "vue-i18n": "^11.4.5",
-    "vue-parley": "^3.1.0"
+    "vue-parley": "^4.0.0"
+  },
+  "peerDependencies": {
+    "primevue": "^4.5.0"
   },
   "devDependencies": {
     "@nuxt/devtools": "^3.4.2",
@@ -56,9 +60,14 @@
     "@nuxt/schema": "^4.5.2",
     "@nuxt/test-utils": "^4.3.2",
     "@nuxtjs/i18n": "^10.6.0",
+    "@primeuix/themes": "^1.2.5",
+    "@primevue/nuxt-module": "^4.5.5",
+    "@tailwindcss/vite": "4.3.2",
     "@types/node": "^22.10.0",
     "eslint": "^10.10.0",
     "nuxt": "^4.5.2",
+    "primevue": "^4.5.5",
+    "tailwindcss": "4.3.2",
     "typescript": "^5.9.3",
     "vitest": "^5.0.1",
     "vue": "^3.5.43",

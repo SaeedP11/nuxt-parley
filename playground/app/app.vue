@@ -13,79 +13,44 @@ useHead({
 </script>
 
 <template>
-  <div class="playground">
-    <header>
-      <strong>nuxt-parley</strong>
-      <span>{{ $t('signedInAs', { user }) }}</span>
-      <a
-        :href="`?user=${otherUser}`"
-        target="_blank"
-      >{{ $t('openAs', { user: otherUser }) }}</a>
-      <span class="spacer" />
-      <button
-        v-for="l in locales"
-        :key="l.code"
-        :disabled="l.code === locale"
-        @click="setLocale(l.code)"
-      >
-        {{ l.name }}
-      </button>
-      <button @click="dark = !dark">
-        {{ dark ? $t('light') : $t('dark') }}
-      </button>
-    </header>
-    <main>
+  <div class="flex h-dvh flex-col bg-(--p-content-background) text-(--p-text-color)">
+    <Toolbar class="shrink-0 rounded-none! border-x-0! border-t-0! px-4! py-2!">
+      <template #start>
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+          <strong>nuxt-parley</strong>
+          <span class="text-(--p-text-muted-color)">{{ $t('signedInAs', { user }) }}</span>
+          <Button
+            as="a"
+            :href="`?user=${otherUser}`"
+            target="_blank"
+            variant="link"
+            size="small"
+            :label="$t('openAs', { user: otherUser })"
+          />
+        </div>
+      </template>
+      <template #end>
+        <div class="flex items-center gap-x-2">
+          <SelectButton
+            :model-value="locale"
+            :options="locales"
+            option-label="name"
+            option-value="code"
+            :allow-empty="false"
+            size="small"
+            @update:model-value="setLocale"
+          />
+          <ToggleButton
+            v-model="dark"
+            :on-label="$t('dark')"
+            :off-label="$t('light')"
+            size="small"
+          />
+        </div>
+      </template>
+    </Toolbar>
+    <main class="min-h-0 flex-1">
       <ChatPage />
     </main>
   </div>
 </template>
-
-<style>
-html,
-body,
-#__nuxt {
-  height: 100%;
-  margin: 0;
-}
-
-.playground {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  font-family: system-ui, sans-serif;
-  color: #1f2328;
-  background: #fff;
-}
-
-.dark .playground {
-  color: #e6edf3;
-  background: #0d1117;
-}
-
-.playground header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 16px;
-  border-bottom: 1px solid #d0d7de;
-  font-size: 14px;
-}
-
-.dark .playground header {
-  border-color: #30363d;
-}
-
-.playground header a {
-  color: inherit;
-}
-
-.playground .spacer {
-  flex: 1;
-}
-
-.playground main {
-  flex: 1;
-  min-height: 0;
-}
-</style>

@@ -31,7 +31,9 @@ export interface ModuleOptions {
    */
   prefix: string
   /**
-   * Also register the UI primitives the chat is built from (`BButton`, `BModal`, ...).
+   * Also register the helpers vue-parley exports besides the chat itself: `BIcon` (a Phosphor
+   * icon by name), `BEmojiPicker` and `BVirtualVerticalList`. Its controls are PrimeVue
+   * components, which come from the app's own PrimeVue setup.
    * @default false
    */
   primitives: boolean
@@ -92,23 +94,7 @@ const COMPONENTS: Record<string, string> = {
   ChatCall: 'Call',
 }
 
-const PRIMITIVES = [
-  'BButton',
-  'BCarousel',
-  'BCheckBox',
-  'BEmojiPicker',
-  'BIcon',
-  'BImage',
-  'BInput',
-  'BLabel',
-  'BMenu',
-  'BModal',
-  'BPopup',
-  'BSelect',
-  'BTab',
-  'BToast',
-  'BVirtualVerticalList',
-]
+const PRIMITIVES = ['BEmojiPicker', 'BIcon', 'BVirtualVerticalList']
 
 const COMPOSABLES = [
   'useChatStore',
@@ -196,8 +182,20 @@ export default defineNuxtModule<ModuleOptions>({
         addPlugin({ src: resolve('./runtime/plugins/i18n'), mode: 'client' })
       }
 
+      // vue-parley's UI is PrimeVue, themed by the app's preset, and `createChat()` refuses to run
+      // without it. The module leaves PrimeVue to the app, so an app that already has it keeps its
+      // own setup and theme.
+      if (options.config && !hasNuxtModule('@primevue/nuxt-module', nuxt) && !nuxt.options._prepare) {
+        logger.warn(
+          'vue-parley needs PrimeVue 4. Add `@primevue/nuxt-module` with a theme preset, or install '
+          + 'PrimeVue from a plugin of your own and set `parley.config: false`, calling `createChat()` '
+          + 'after it.',
+        )
+      }
+
       // A template rather than a runtime file: Nuxt reads `dependsOn` from the plugin's source at
-      // build time, and the i18n plugin to wait for depends on the app.
+      // build time, and the i18n plugin to wait for depends on the app. Appended, so it runs after
+      // every module's plugins: PrimeVue's has no name to wait for, and must be installed first.
       addPluginTemplate({
         filename: 'parley.client.mjs',
         mode: 'client',
@@ -213,7 +211,7 @@ export default defineNuxtModule<ModuleOptions>({
           '})',
           '',
         ].join('\n'),
-      })
+      }, { append: true })
     })
   },
 })
