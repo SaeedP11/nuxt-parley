@@ -69,6 +69,7 @@ export type {
   FetchProfileAttachmentsParams,
   MediaDownloadOptions,
   MediaHandlers,
+  MediaItem,
   Message,
   MessagesHandlers,
   MessageType,
@@ -103,6 +104,8 @@ const COMPOSABLES = [
   'useProfileStore',
   'useCallStore',
   'provideCallHandlers',
+  // Not a composable, but hosts need it wherever they map an album to or from their backend.
+  'messageMedia',
 ]
 
 export default defineNuxtModule<ModuleOptions>({

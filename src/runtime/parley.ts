@@ -15,6 +15,7 @@ export {
   BIcon,
   BVirtualVerticalList,
   createChat,
+  messageMedia,
   provideCallHandlers,
   useCallStore,
   useChatStore,
