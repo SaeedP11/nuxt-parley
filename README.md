@@ -66,7 +66,7 @@ export default defineParleyConfig(async (nuxtApp) => {
       /* ChatHandlers: fetch, delete, end conversations */
     },
     messages: {
-      /* MessagesHandlers: fetch, send, edit, delete messages */
+      /* MessagesHandlers: fetch, send, edit, delete messages; markRead and fetchReaders for read receipts */
     },
     media: {
       /* MediaHandlers: download files, file sizes */

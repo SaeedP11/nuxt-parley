@@ -71,6 +71,7 @@ export type {
   MediaHandlers,
   MediaItem,
   Message,
+  MessageReader,
   MessagesHandlers,
   MessageType,
   ProfileAttachmentsPage,
