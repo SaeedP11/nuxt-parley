@@ -48,7 +48,7 @@
     "@vueuse/core": "^14.2.1",
     "pinia": "^4.0.3",
     "vue-i18n": "^11.4.5",
-    "vue-parley": "^4.3.0"
+    "vue-parley": "^4.3.1"
   },
   "peerDependencies": {
     "primevue": "^4.5.0"
