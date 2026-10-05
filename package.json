@@ -1,6 +1,6 @@
 {
   "name": "nuxt-parley",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "Nuxt module for vue-parley: a drop-in chat and video-call UI, wired into Pinia and i18n for you.",
   "license": "MIT",
   "author": "SaeedP11 <saeed_abdi.p11@outlook.com>",
