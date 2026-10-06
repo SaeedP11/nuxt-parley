@@ -17,6 +17,7 @@ export {
   createChat,
   messageMedia,
   provideCallHandlers,
+  resetChat,
   useCallStore,
   useChatStore,
   useMediaStore,
