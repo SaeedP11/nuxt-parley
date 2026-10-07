@@ -24,8 +24,8 @@ importers:
         specifier: ^11.4.5
         version: 11.4.12(vue@3.5.43(typescript@5.9.3))
       vue-parley:
-        specifier: ^4.5.0
-        version: 4.5.0(@vueuse/core@14.4.0(vue@3.5.43(typescript@5.9.3)))(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3)))(primevue@4.5.5(vue@3.5.43(typescript@5.9.3)))(typescript@5.9.3)(vue-i18n@11.4.12(vue@3.5.43(typescript@5.9.3)))(vue@3.5.43(typescript@5.9.3))
+        specifier: ^4.7.0
+        version: 4.7.0(@vueuse/core@14.4.0(vue@3.5.43(typescript@5.9.3)))(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3)))(primevue@4.5.5(vue@3.5.43(typescript@5.9.3)))(typescript@5.9.3)(vue-i18n@11.4.12(vue@3.5.43(typescript@5.9.3)))(vue@3.5.43(typescript@5.9.3))
     devDependencies:
       '@nuxt/devtools':
         specifier: ^3.4.2
@@ -1765,6 +1765,12 @@ packages:
 
   '@types/deep-eql@4.0.2':
     resolution: {integrity: sha512-c9h9dVVMigMPc4bwTvC5dxqtqJZwQPePsWjPlpSOnojbor6pGqdk541lfA7AqFQr5pB1BRdq0juY9db81BwyFw==}
+
+  '@types/dom-mediacapture-transform@0.1.12':
+    resolution: {integrity: sha512-d7/QsLRwF864A5mgIM/YrfiglHoYn7zgCcAoJgW404r+2DwnNr7EBbLnCWpmOMgH8y0te73L1AV6H1bmauaWFw==}
+
+  '@types/dom-webcodecs@0.1.13':
+    resolution: {integrity: sha512-O5hkiFIcjjszPIYyUSyvScyvrBoV3NOEEZx/pMlsu44TKzWNkLVBBxnxJz42in5n3QIolYOcBYFCPZZ0h8SkwQ==}
 
   '@types/esrecurse@4.3.1':
     resolution: {integrity: sha512-xJBAbDifo5hpffDBuHl0Y8ywswbiAp/Wi7Y/GtAgSlZyIABppyurxVueOPE8LUQOxdlgi6Zqce7uoEpqNTeiUw==}
@@ -3545,6 +3551,9 @@ packages:
   mdn-data@2.35.0:
     resolution: {integrity: sha512-k+1+dEIm2z/BEfdvYzT/fIyAGeDBo/1AJNJI4ilFXJRYoxP/3Ds+GP8shAOIq8jYXY9N5nGB3Ag104NsagmLAA==}
 
+  mediabunny@1.61.3:
+    resolution: {integrity: sha512-kUqLKVXQVwHR62GkOJxYosAmXERJbqnXBgJDTtRlxHEYviVkMg/Evhl9XN6kedqS5LP1tV4kFKyzY/V4a4ofow==}
+
   merge-stream@2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
 
@@ -5140,8 +5149,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  vue-parley@4.5.0:
-    resolution: {integrity: sha512-GfcI3jwiBTZLHO3DZXw+UoNfRNr8+DKoq4ax0eqMLqjNqO8HfnC+t47OKOkTzoa9Xt7QrH/Nu3EY6mp5e9QjcQ==}
+  vue-parley@4.7.0:
+    resolution: {integrity: sha512-aEGIYx+7PUFh3/LIpPZVIoybXnQx1gtd8kUiYFOslyHqin0G7RN756qzEWdSfUSNXLtKUoR0At9P+TUppnPbuQ==}
     peerDependencies:
       '@vueuse/core': ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
       pinia: ^2.2.0 || ^3.0.0 || ^4.0.0
@@ -7146,6 +7155,12 @@ snapshots:
 
   '@types/deep-eql@4.0.2': {}
 
+  '@types/dom-mediacapture-transform@0.1.12':
+    dependencies:
+      '@types/dom-webcodecs': 0.1.13
+
+  '@types/dom-webcodecs@0.1.13': {}
+
   '@types/esrecurse@4.3.1': {}
 
   '@types/estree@1.0.9': {}
@@ -9017,6 +9032,11 @@ snapshots:
 
   mdn-data@2.35.0: {}
 
+  mediabunny@1.61.3:
+    dependencies:
+      '@types/dom-mediacapture-transform': 0.1.12
+      '@types/dom-webcodecs': 0.1.13
+
   merge-stream@2.0.0: {}
 
   merge2@1.4.1: {}
@@ -10824,11 +10844,12 @@ snapshots:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.43(typescript@5.9.3)
 
-  vue-parley@4.5.0(@vueuse/core@14.4.0(vue@3.5.43(typescript@5.9.3)))(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3)))(primevue@4.5.5(vue@3.5.43(typescript@5.9.3)))(typescript@5.9.3)(vue-i18n@11.4.12(vue@3.5.43(typescript@5.9.3)))(vue@3.5.43(typescript@5.9.3)):
+  vue-parley@4.7.0(@vueuse/core@14.4.0(vue@3.5.43(typescript@5.9.3)))(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3)))(primevue@4.5.5(vue@3.5.43(typescript@5.9.3)))(typescript@5.9.3)(vue-i18n@11.4.12(vue@3.5.43(typescript@5.9.3)))(vue@3.5.43(typescript@5.9.3)):
     dependencies:
       '@phosphor-icons/vue': 2.2.1(vue@3.5.43(typescript@5.9.3))
       '@tanstack/vue-virtual': 3.13.39(vue@3.5.43(typescript@5.9.3))
       '@vueuse/core': 14.4.0(vue@3.5.43(typescript@5.9.3))
+      mediabunny: 1.61.3
       nanoid: 6.0.1
       pinia: 4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3))
       primevue: 4.5.5(vue@3.5.43(typescript@5.9.3))
