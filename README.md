@@ -203,3 +203,5 @@ To go back to the published version, remove the override and run `pnpm install` 
 ## License
 
 [MIT](LICENSE)
+
+Repository: [github.com/SaeedP11/nuxt-parley](https://github.com/SaeedP11/nuxt-parley)

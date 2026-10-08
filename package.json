@@ -4,6 +4,14 @@
   "description": "Nuxt module for vue-parley: a drop-in chat and video-call UI, wired into Pinia and i18n for you.",
   "license": "MIT",
   "author": "SaeedP11 <saeed_abdi.p11@outlook.com>",
+  "homepage": "https://github.com/SaeedP11/nuxt-parley#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaeedP11/nuxt-parley.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SaeedP11/nuxt-parley/issues"
+  },
   "type": "module",
   "keywords": [
     "nuxt",
