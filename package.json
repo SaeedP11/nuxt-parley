@@ -1,6 +1,6 @@
 {
   "name": "nuxt-parley",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Nuxt module for vue-parley: a drop-in chat and video-call UI, wired into Pinia and i18n for you.",
   "license": "MIT",
   "author": "SaeedP11 <saeed_abdi.p11@outlook.com>",
@@ -48,7 +48,7 @@
     "@vueuse/core": "^14.2.1",
     "pinia": "^4.0.3",
     "vue-i18n": "^11.4.5",
-    "vue-parley": "^4.6.0"
+    "vue-parley": "^4.7.0"
   },
   "peerDependencies": {
     "primevue": "^4.5.0"
