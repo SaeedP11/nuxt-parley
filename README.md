@@ -127,6 +127,7 @@ With `primitives: true`, `BIcon` (a Phosphor icon by name), `BEmojiPicker` and `
 | `useChatStore`, `useMessagesStore`, `useMediaStore`, `useProfileStore`, `useCallStore` | vue-parley's Pinia stores. Usable anywhere, including plugins and middleware. |
 | `provideCallHandlers(handlers)` | Supplies call handlers from inside a component. |
 | `messageMedia(message)` | A message's photo and video album (`media`, or `imageUrl` as photos). Albums are sent with `media`: upload each item, and return it on the message. |
+| `resetChat()` | Forgets everything the chat loaded for the signed-in user (conversations, threads, drafts, shared media, the downloaded-file cache) and ends a running call. Call it on sign-out or an account switch; the handlers stay. |
 | `defineParleyConfig(fn)` | Typed helper for `app/parley.config.ts`. |
 
 The stores get their handlers from the config file. Used on the server, they exist but have no handlers.

@@ -105,6 +105,8 @@ const COMPOSABLES = [
   'useProfileStore',
   'useCallStore',
   'provideCallHandlers',
+  // Not a composable either: hosts call it when the signed-in user changes.
+  'resetChat',
   // Not a composable, but hosts need it wherever they map an album to or from their backend.
   'messageMedia',
 ]
