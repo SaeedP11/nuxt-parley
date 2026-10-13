@@ -24,8 +24,8 @@ importers:
         specifier: ^11.4.5
         version: 11.4.12(vue@3.5.43(typescript@5.9.3))
       vue-parley:
-        specifier: ^4.8.0
-        version: 4.8.0(@vueuse/core@14.4.0(vue@3.5.43(typescript@5.9.3)))(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3)))(primevue@4.5.5(vue@3.5.43(typescript@5.9.3)))(typescript@5.9.3)(vue-i18n@11.4.12(vue@3.5.43(typescript@5.9.3)))(vue@3.5.43(typescript@5.9.3))
+        specifier: ^5.0.0
+        version: 5.0.0(@vueuse/core@14.4.0(vue@3.5.43(typescript@5.9.3)))(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3)))(primevue@4.5.5(vue@3.5.43(typescript@5.9.3)))(vue-i18n@11.4.12(vue@3.5.43(typescript@5.9.3)))(vue@3.5.43(typescript@5.9.3))
     devDependencies:
       '@nuxt/devtools':
         specifier: ^3.4.2
@@ -676,6 +676,14 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
+  '@iconify/types@2.0.0':
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+
+  '@iconify/vue@5.0.3':
+    resolution: {integrity: sha512-e9x6QZe2/HyeHUog0jzZJSZts7m/YntPYp/p4OqtZEXpHznxWnQpcX30YpuaUH43h69l3YeR1FCJ8V1t3qd7qA==}
+    peerDependencies:
+      vue: '>=3.0.0'
+
   '@intlify/bundle-utils@11.2.5':
     resolution: {integrity: sha512-gl7CGygRALtuT4H8n/PNC0hubg4rnctPoT04//GZNsTemvJw0Q7i6jSaq0PZHxnH0cdGqyowNXmW4FYILbahzg==}
     engines: {node: '>= 22.13'}
@@ -1241,12 +1249,6 @@ packages:
     bundledDependencies:
       - napi-wasm
 
-  '@phosphor-icons/vue@2.2.1':
-    resolution: {integrity: sha512-3RNg1utc2Z5RwPKWFkW3eXI/0BfQAwXgtFxPUPeSzi55jGYUq16b+UqcgbKLazWFlwg5R92OCLKjDiJjeiJcnA==}
-    engines: {node: '>=14'}
-    peerDependencies:
-      vue: '>=3.2.39'
-
   '@pinia/nuxt@1.0.2':
     resolution: {integrity: sha512-x+G/zz7SDjLq3TUf0jpaXiOb03ZY+O3i0q8aMP76Lz3MS/NaE71SJCCZjYiF8dNsz/0oOnCPT2DKghkumXlVRw==}
     peerDependencies:
@@ -1258,9 +1260,6 @@ packages:
 
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
-
-  '@popperjs/core@2.11.8':
-    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
 
   '@poppinss/colors@4.1.6':
     resolution: {integrity: sha512-H9xkIdFswbS8n1d6vmRd8+c10t2Qe+rZITbbDHHkQixH5+2x1FDGmi/0K+WgWiqQFKPSlIYB7jlH6Kpfn6Fleg==}
@@ -3132,9 +3131,6 @@ packages:
   human-signals@5.0.0:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
-
-  idb@7.1.1:
-    resolution: {integrity: sha512-gchesWBzyvGHRO9W8tzUWFDycow5gwjvFKfyV9FF32Y7F50yZMp7mP+T2mJIWFx49zicqyC4uefHM17o6xKIVQ==}
 
   identifier-regex@1.1.0:
     resolution: {integrity: sha512-SLX4H/vtcYlYnL7XqnuJKHU7Z8517TgsW9nmQiGOgMCjQ8V/deLYu6bEmbGoXe7WMMhc9+EUGyFFneHja8KabA==}
@@ -5149,8 +5145,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  vue-parley@4.8.0:
-    resolution: {integrity: sha512-SF8YjcaINqTiG8LXY3Q5P+HSqwnkPR5InQ7zvyL68n1ztR1XXU/plL6sGKi3qJOIiS3M5l9i7Khd5EPnpC2lLA==}
+  vue-parley@5.0.0:
+    resolution: {integrity: sha512-5l/+PN2Y3XrF6siZ3rYKW8ga6W5Gru1fQGEkGqtx6EpMVBrMpYC6Tx7at6eJufHFlHCVha6l9rD1UXGrcbXOuw==}
     peerDependencies:
       '@vueuse/core': ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
       pinia: ^2.2.0 || ^3.0.0 || ^4.0.0
@@ -5202,10 +5198,6 @@ packages:
     hasBin: true
     peerDependencies:
       typescript: '>=5.0.0'
-
-  vue3-emoji-picker@1.1.8:
-    resolution: {integrity: sha512-k9tVHeQEBVLzVCLYAkFaI1nib3FJFQwdPhWD5khJkhks3ktg3g12z5wPGOSDpIuSLNtelRGvq1qdmZuJu5khfA==}
-    engines: {node: '>=16.0.0'}
 
   vue@3.5.43:
     resolution: {integrity: sha512-o5qZoksdnjIKvW1srZ3ab7pcDNYAerBjRe54D0LBLfRdCYFrSgBHVXokMas35czQc0//lmx4/tuY4ZNQ+Rf2Ng==}
@@ -5836,6 +5828,13 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/retry@0.4.3': {}
+
+  '@iconify/types@2.0.0': {}
+
+  '@iconify/vue@5.0.3(vue@3.5.43(typescript@5.9.3))':
+    dependencies:
+      '@iconify/types': 2.0.0
+      vue: 3.5.43(typescript@5.9.3)
 
   '@intlify/bundle-utils@11.2.5(vue-i18n@11.4.12(vue@3.5.43(typescript@5.9.3)))':
     dependencies:
@@ -6739,10 +6738,6 @@ snapshots:
       is-glob: 4.0.3
       picomatch: 4.0.7
 
-  '@phosphor-icons/vue@2.2.1(vue@3.5.43(typescript@5.9.3))':
-    dependencies:
-      vue: 3.5.43(typescript@5.9.3)
-
   '@pinia/nuxt@1.0.2(magic-string@1.4.2)(magicast@0.5.5)(oxc-parser@0.141.0)(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3)))(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))':
     dependencies:
       '@nuxt/kit': 4.5.2(magic-string@1.4.2)(magicast@0.5.5)(oxc-parser@0.141.0)(rolldown@1.2.11)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))
@@ -6758,8 +6753,6 @@ snapshots:
     optional: true
 
   '@polka/url@1.0.0-next.29': {}
-
-  '@popperjs/core@2.11.8': {}
 
   '@poppinss/colors@4.1.6':
     dependencies:
@@ -8645,8 +8638,6 @@ snapshots:
   httpxy@0.5.5: {}
 
   human-signals@5.0.0: {}
-
-  idb@7.1.1: {}
 
   identifier-regex@1.1.0:
     dependencies:
@@ -10844,9 +10835,9 @@ snapshots:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.43(typescript@5.9.3)
 
-  vue-parley@4.8.0(@vueuse/core@14.4.0(vue@3.5.43(typescript@5.9.3)))(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3)))(primevue@4.5.5(vue@3.5.43(typescript@5.9.3)))(typescript@5.9.3)(vue-i18n@11.4.12(vue@3.5.43(typescript@5.9.3)))(vue@3.5.43(typescript@5.9.3)):
+  vue-parley@5.0.0(@vueuse/core@14.4.0(vue@3.5.43(typescript@5.9.3)))(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3)))(primevue@4.5.5(vue@3.5.43(typescript@5.9.3)))(vue-i18n@11.4.12(vue@3.5.43(typescript@5.9.3)))(vue@3.5.43(typescript@5.9.3)):
     dependencies:
-      '@phosphor-icons/vue': 2.2.1(vue@3.5.43(typescript@5.9.3))
+      '@iconify/vue': 5.0.3(vue@3.5.43(typescript@5.9.3))
       '@tanstack/vue-virtual': 3.13.39(vue@3.5.43(typescript@5.9.3))
       '@vueuse/core': 14.4.0(vue@3.5.43(typescript@5.9.3))
       mediabunny: 1.61.3
@@ -10855,9 +10846,6 @@ snapshots:
       primevue: 4.5.5(vue@3.5.43(typescript@5.9.3))
       vue: 3.5.43(typescript@5.9.3)
       vue-i18n: 11.4.12(vue@3.5.43(typescript@5.9.3))
-      vue3-emoji-picker: 1.1.8(typescript@5.9.3)
-    transitivePeerDependencies:
-      - typescript
 
   vue-router@5.3.1(@vue/compiler-sfc@3.5.43)(esbuild@0.28.2)(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3)))(rolldown@1.2.11)(rollup@4.63.5)(vite@8.3.1(@types/node@22.20.4)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))(vue@3.5.43(typescript@5.9.3)):
     dependencies:
@@ -10912,14 +10900,6 @@ snapshots:
       '@volar/typescript': 2.4.28
       '@vue/language-core': 3.3.11
       typescript: 5.9.3
-
-  vue3-emoji-picker@1.1.8(typescript@5.9.3):
-    dependencies:
-      '@popperjs/core': 2.11.8
-      idb: 7.1.1
-      vue: 3.5.43(typescript@5.9.3)
-    transitivePeerDependencies:
-      - typescript
 
   vue@3.5.43(typescript@5.9.3):
     dependencies:
