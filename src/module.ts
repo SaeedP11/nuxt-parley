@@ -56,6 +56,7 @@ export type {
   CallMessage,
   CallMessageSchema,
   CallPublishOptions,
+  ChatEvent,
   ChatFilter,
   ChatHandlers,
   ChatOptions,
