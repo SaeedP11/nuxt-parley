@@ -117,6 +117,10 @@ All client-only: the server renders a placeholder, so no `<ClientOnly>` is neede
 | `<ChatPage>` | The whole chat: contact list, conversation and call view. Slots: `empty`, `header-actions`, `conversation-top`, `above-input`. |
 | `<ChatCall>` | The call view (vue-parley's `Call`). Render it near the app root, with `<ChatPage :render-call="false" />`, to keep a call on screen while the user navigates. |
 | `<ChatList>`, `<ChatConversation>`, `<ChatHeader>`, `<ChatMessages>`, `<ChatInput>`, `<ChatBubble>` | Building blocks for a custom layout. |
+| `<Whiteboard>` / `<ChatWhiteboard>` | Interactive whiteboard with drawing tools, shapes, multi-layer support, zoom/pan gestures, and live streaming. |
+| `<WhiteboardDialog>` / `<ChatWhiteboardDialog>` | Modal dialog wrapping the whiteboard with responsive bottom dock, participant strips, and share-to-call integration. |
+| `<WhiteboardRgbPicker>` / `<ChatWhiteboardRgbPicker>` | RGB color picker for custom whiteboard colors. |
+| `<CallPaintBoard>` / `<ChatCallPaintBoard>` | In-call annotation and paint board. |
 
 With `primitives: true`, `BIcon` (a Phosphor icon by name), `BEmojiPicker` and `BVirtualVerticalList` are registered too. The chat's controls are PrimeVue components; use PrimeVue's own `Button`, `Dialog` and so on in your pages. `prefix` prefixes every name.
 
@@ -124,11 +128,18 @@ With `primitives: true`, `BIcon` (a Phosphor icon by name), `BEmojiPicker` and `
 
 | Name | What it is |
 | --- | --- |
+| `useParley()`, `useParleyChat()` | High-level composable for the active conversation, contact, messages, drafts, unread totals, sending messages, and chat actions. |
+| `useParleyCall()` | High-level composable for voice and video calls: reactive session, duration, controls (audio, video, flashlight, screen share, whiteboard share, camera flip), participants, and signaling observation. |
+| `useParleyWhiteboard()` | Composable for controlling whiteboard dialog visibility and syncing stream sharing with an active call session. |
+| `useParleyMedia()` | Composable for downloading, caching, and retrieving media blobs, file sizes, and albums. |
+| `formatDuration(seconds)` | Formats duration in seconds to `mm:ss` or `hh:mm:ss`. |
+| `formatBytes(bytes)` | Formats byte numbers to human-readable `Bytes`, `KB`, `MB`, `GB`. |
+| `CallMessageType` | Signalling message types enum (`Signal`, `Join`, `TrackType`, `Call`, `Hangup`, `Presence`). |
 | `useChatStore`, `useMessagesStore`, `useMediaStore`, `useProfileStore`, `useCallStore` | vue-parley's Pinia stores. Usable anywhere, including plugins and middleware. |
 | `provideCallHandlers(handlers)` | Supplies call handlers from inside a component. |
 | `messageMedia(message)` | A message's photo and video album (`media`, or `imageUrl` as photos). Albums are sent with `media`: upload each item, and return it on the message. |
 | `resetChat()` | Forgets everything the chat loaded for the signed-in user (conversations, threads, drafts, shared media, the downloaded-file cache) and ends a running call. Call it on sign-out or an account switch; the handlers stay. |
-| `defineParleyConfig(fn)` | Typed helper for `app/parley.config.ts`. |
+| `defineParleyConfig(fn | object)` | Typed helper for `app/parley.config.ts`. Supports both config functions and static options objects. |
 
 The stores get their handlers from the config file. Used on the server, they exist but have no handlers.
 

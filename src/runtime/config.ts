@@ -4,8 +4,11 @@ import type { ChatOptions } from 'vue-parley'
 /**
  * Returns what `createChat()` needs: the backend handlers and the signed-in user. Runs once, in
  * the browser, inside a Nuxt plugin, so composables such as `useRuntimeConfig()` work here.
+ * Can be a ChatOptions object or a function returning ChatOptions (sync or async).
  */
-export type ParleyConfig = (nuxtApp: NuxtApp) => ChatOptions | Promise<ChatOptions>
+export type ParleyConfig
+  = | ChatOptions
+    | ((nuxtApp: NuxtApp) => ChatOptions | Promise<ChatOptions>)
 
 /** Typed identity helper for `app/parley.config.ts`. Auto-imported. */
 export function defineParleyConfig(config: ParleyConfig): ParleyConfig {
