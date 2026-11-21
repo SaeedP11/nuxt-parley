@@ -13,6 +13,7 @@ export interface ParleyCallParticipant {
   media?: CallMediaState
   camera?: MediaStream
   screen?: MediaStream
+  whiteboard?: MediaStream
   status: ParticipantStatus
 }
 
@@ -29,6 +30,8 @@ export interface UseParleyCallReturn {
   // Media
   isAudioOn: ComputedRef<boolean>
   isVideoOn: ComputedRef<boolean>
+  isCameraAvailable: ComputedRef<boolean>
+  isMicrophoneAvailable: ComputedRef<boolean>
   isScreenSharing: ComputedRef<boolean>
   isWhiteboardSharing: ComputedRef<boolean>
   isFlashlightOn: ComputedRef<boolean>
@@ -36,6 +39,7 @@ export interface UseParleyCallReturn {
   canFlipCamera: ComputedRef<boolean>
   facingMode: ComputedRef<string>
   cameras: ComputedRef<MediaDeviceInfo[]>
+  microphones: ComputedRef<MediaDeviceInfo[]>
   localStream: ComputedRef<MediaStream | null>
   screenStream: ComputedRef<MediaStream | null>
   whiteboardStream: ComputedRef<MediaStream | null>
@@ -46,6 +50,7 @@ export interface UseParleyCallReturn {
   phase: ComputedRef<CallPhase>
   remoteVideos: ComputedRef<Record<string, unknown>>
   remoteScreens: ComputedRef<Record<string, unknown>>
+  remoteWhiteboards: ComputedRef<Record<string, unknown>>
   // Actions
   startCall: (channel: string, options?: { video?: boolean }) => void
   endCall: () => void
@@ -91,6 +96,8 @@ export function useParleyCall(): UseParleyCallReturn {
   // Media state
   const isAudioOn = computed(() => session.value?.media.isAudioOn.value ?? false)
   const isVideoOn = computed(() => session.value?.media.isVideoOn.value ?? false)
+  const isCameraAvailable = computed(() => session.value?.media.isCameraAvailable.value ?? false)
+  const isMicrophoneAvailable = computed(() => session.value?.media.isMicrophoneAvailable.value ?? false)
   const isScreenSharing = computed(() => session.value?.media.isScreenSharing.value ?? false)
   const isWhiteboardSharing = computed(() => session.value?.media.isWhiteboardSharing.value ?? false)
   const isFlashlightOn = computed(() => session.value?.media.isFlashlightOn.value ?? false)
@@ -98,6 +105,7 @@ export function useParleyCall(): UseParleyCallReturn {
   const canFlipCamera = computed(() => session.value?.media.canFlipCamera.value ?? false)
   const facingMode = computed(() => session.value?.media.facingMode.value ?? 'user')
   const cameras = computed(() => session.value?.media.cameras.value ?? [])
+  const microphones = computed(() => session.value?.media.microphones.value ?? [])
 
   // Streams
   const localStream = computed(() => session.value?.media.localStream.value ?? null)
@@ -111,6 +119,7 @@ export function useParleyCall(): UseParleyCallReturn {
   const phase = computed<CallPhase>(() => session.value?.phase.value ?? (callStore.isActive ? 'connecting' : 'ended'))
   const remoteVideos = computed(() => session.value?.peers.remoteVideos ?? {})
   const remoteScreens = computed(() => session.value?.peers.remoteScreens ?? {})
+  const remoteWhiteboards = computed(() => session.value?.peers.remoteWhiteboards ?? {})
 
   // Controls
   const startCall = (channel: string, options?: { video?: boolean }) => callStore.startCall(channel, options)
@@ -162,6 +171,8 @@ export function useParleyCall(): UseParleyCallReturn {
     // Media
     isAudioOn,
     isVideoOn,
+    isCameraAvailable,
+    isMicrophoneAvailable,
     isScreenSharing,
     isWhiteboardSharing,
     isFlashlightOn,
@@ -169,6 +180,7 @@ export function useParleyCall(): UseParleyCallReturn {
     canFlipCamera,
     facingMode,
     cameras,
+    microphones,
     localStream,
     screenStream,
     whiteboardStream,
@@ -179,6 +191,7 @@ export function useParleyCall(): UseParleyCallReturn {
     phase,
     remoteVideos,
     remoteScreens,
+    remoteWhiteboards,
     // Actions
     startCall,
     endCall,
