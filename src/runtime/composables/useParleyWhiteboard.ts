@@ -16,10 +16,14 @@ export function useParleyWhiteboard() {
 
   const close = () => {
     isOpen.value = false
+    callStore.session?.stopWhiteboardShare()
   }
 
   const toggle = () => {
     isOpen.value = !isOpen.value
+    if (!isOpen.value) {
+      callStore.session?.stopWhiteboardShare()
+    }
   }
 
   const startShare = async (stream: MediaStream) => {
