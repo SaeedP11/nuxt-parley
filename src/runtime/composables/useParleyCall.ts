@@ -17,6 +17,14 @@ export interface ParleyCallParticipant {
   status: ParticipantStatus
 }
 
+export interface ActivePresentation {
+  key: string
+  type: 'screen' | 'whiteboard'
+  participant: ParleyCallParticipant
+  stream: MediaStream
+  isSelf: boolean
+}
+
 export interface UseParleyCallReturn {
   callStore: ReturnType<typeof useCallStore>
   session: ComputedRef<ReturnType<typeof useCallStore>['session']>
@@ -27,6 +35,7 @@ export interface UseParleyCallReturn {
   elapsedTime: ComputedRef<number>
   formattedDuration: ComputedRef<string>
   canShareScreen: ComputedRef<boolean>
+  isScreenShareStarting: ComputedRef<boolean>
   // Media
   isAudioOn: ComputedRef<boolean>
   isVideoOn: ComputedRef<boolean>
@@ -43,7 +52,7 @@ export interface UseParleyCallReturn {
   localStream: ComputedRef<MediaStream | null>
   screenStream: ComputedRef<MediaStream | null>
   whiteboardStream: ComputedRef<MediaStream | null>
-  // Participants
+  // Participants & Presentations
   participants: ComputedRef<ParleyCallParticipant[]>
   participantCount: ComputedRef<number>
   tileCount: ComputedRef<number>
@@ -51,6 +60,9 @@ export interface UseParleyCallReturn {
   remoteVideos: ComputedRef<Record<string, unknown>>
   remoteScreens: ComputedRef<Record<string, unknown>>
   remoteWhiteboards: ComputedRef<Record<string, unknown>>
+  presenters: ComputedRef<ParleyCallParticipant[]>
+  whiteboardPresenters: ComputedRef<ParleyCallParticipant[]>
+  activePresentations: ComputedRef<ActivePresentation[]>
   // Actions
   startCall: (channel: string, options?: { video?: boolean }) => void
   endCall: () => void
@@ -99,6 +111,7 @@ export function useParleyCall(): UseParleyCallReturn {
   const isCameraAvailable = computed(() => session.value?.media.isCameraAvailable.value ?? false)
   const isMicrophoneAvailable = computed(() => session.value?.media.isMicrophoneAvailable.value ?? false)
   const isScreenSharing = computed(() => session.value?.media.isScreenSharing.value ?? false)
+  const isScreenShareStarting = computed(() => session.value?.media.isScreenShareStarting.value ?? false)
   const isWhiteboardSharing = computed(() => session.value?.media.isWhiteboardSharing.value ?? false)
   const isFlashlightOn = computed(() => session.value?.media.isFlashlightOn.value ?? false)
   const isFlashlightSupported = computed(() => session.value?.media.isFlashlightSupported.value ?? false)
@@ -120,6 +133,40 @@ export function useParleyCall(): UseParleyCallReturn {
   const remoteVideos = computed(() => session.value?.peers.remoteVideos ?? {})
   const remoteScreens = computed(() => session.value?.peers.remoteScreens ?? {})
   const remoteWhiteboards = computed(() => session.value?.peers.remoteWhiteboards ?? {})
+
+  // Presenters & Presentations
+  const presenters = computed<ParleyCallParticipant[]>(() =>
+    participants.value.filter(p => !!p.screen && p.screen.getVideoTracks().length > 0),
+  )
+  const whiteboardPresenters = computed<ParleyCallParticipant[]>(() =>
+    participants.value.filter(p => !!p.whiteboard && p.whiteboard.getVideoTracks().length > 0),
+  )
+  const activePresentations = computed<ActivePresentation[]>(() => {
+    const list: ActivePresentation[] = []
+    for (const p of presenters.value) {
+      if (p.screen?.getVideoTracks().length) {
+        list.push({
+          key: `screen:${p.id}`,
+          type: 'screen',
+          participant: p,
+          stream: p.screen,
+          isSelf: p.isSelf,
+        })
+      }
+    }
+    for (const p of whiteboardPresenters.value) {
+      if (p.whiteboard?.getVideoTracks().length) {
+        list.push({
+          key: `whiteboard:${p.id}`,
+          type: 'whiteboard',
+          participant: p,
+          stream: p.whiteboard,
+          isSelf: p.isSelf,
+        })
+      }
+    }
+    return list
+  })
 
   // Controls
   const startCall = (channel: string, options?: { video?: boolean }) => callStore.startCall(channel, options)
@@ -168,6 +215,7 @@ export function useParleyCall(): UseParleyCallReturn {
     elapsedTime,
     formattedDuration,
     canShareScreen,
+    isScreenShareStarting,
     // Media
     isAudioOn,
     isVideoOn,
@@ -184,7 +232,7 @@ export function useParleyCall(): UseParleyCallReturn {
     localStream,
     screenStream,
     whiteboardStream,
-    // Participants
+    // Participants & Presentations
     participants,
     participantCount,
     tileCount,
@@ -192,6 +240,9 @@ export function useParleyCall(): UseParleyCallReturn {
     remoteVideos,
     remoteScreens,
     remoteWhiteboards,
+    presenters,
+    whiteboardPresenters,
+    activePresentations,
     // Actions
     startCall,
     endCall,

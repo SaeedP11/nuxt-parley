@@ -24,8 +24,8 @@ importers:
         specifier: ^11.4.5
         version: 11.4.12(vue@3.5.43(typescript@5.9.3))
       vue-parley:
-        specifier: ^5.7.2
-        version: 5.7.2(@vueuse/core@14.4.0(vue@3.5.43(typescript@5.9.3)))(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3)))(primevue@4.5.5(vue@3.5.43(typescript@5.9.3)))(vue-i18n@11.4.12(vue@3.5.43(typescript@5.9.3)))(vue@3.5.43(typescript@5.9.3))
+        specifier: ^5.7.5
+        version: 5.7.5(@vueuse/core@14.4.0(vue@3.5.43(typescript@5.9.3)))(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3)))(primevue@4.5.5(vue@3.5.43(typescript@5.9.3)))(vue-i18n@11.4.12(vue@3.5.43(typescript@5.9.3)))(vue@3.5.43(typescript@5.9.3))
     devDependencies:
       '@nuxt/devtools':
         specifier: ^3.4.2
@@ -5163,8 +5163,8 @@ packages:
       konva: '>7'
       vue: ^3
 
-  vue-parley@5.7.2:
-    resolution: {integrity: sha512-OkC8qJB0Wu5Lx/XZN1KbXATSGwevF9cP0FcJL8d6up4yIoj1HmreprsUGOHRJMZPDZRJuIEdhmLHwHhq04g0aw==}
+  vue-parley@5.7.5:
+    resolution: {integrity: sha512-QIvBZ94RURytT/L2sbiz/cYu/edxpRbKG/2mZ0uF0cbUQ7zSXu2l5eOIqY1efr1YwmG4RvACTGXFNqUBrQFy6g==}
     peerDependencies:
       '@vueuse/core': ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
       pinia: ^2.2.0 || ^3.0.0 || ^4.0.0
@@ -10860,7 +10860,7 @@ snapshots:
       konva: 10.9.1
       vue: 3.5.43(typescript@5.9.3)
 
-  vue-parley@5.7.2(@vueuse/core@14.4.0(vue@3.5.43(typescript@5.9.3)))(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3)))(primevue@4.5.5(vue@3.5.43(typescript@5.9.3)))(vue-i18n@11.4.12(vue@3.5.43(typescript@5.9.3)))(vue@3.5.43(typescript@5.9.3)):
+  vue-parley@5.7.5(@vueuse/core@14.4.0(vue@3.5.43(typescript@5.9.3)))(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3)))(primevue@4.5.5(vue@3.5.43(typescript@5.9.3)))(vue-i18n@11.4.12(vue@3.5.43(typescript@5.9.3)))(vue@3.5.43(typescript@5.9.3)):
     dependencies:
       '@iconify/vue': 5.0.3(vue@3.5.43(typescript@5.9.3))
       '@tanstack/vue-virtual': 3.13.39(vue@3.5.43(typescript@5.9.3))

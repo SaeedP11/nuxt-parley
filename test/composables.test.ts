@@ -100,6 +100,7 @@ describe('composables', () => {
   it('useParleyWhiteboard manages dialog open state', () => {
     const wb = useParleyWhiteboard()
     expect(wb.isOpen.value).toBe(false)
+    expect(wb.isFullWindow.value).toBe(false)
     expect(wb.isSharing.value).toBe(false)
 
     wb.open()
@@ -110,6 +111,11 @@ describe('composables', () => {
 
     wb.toggle()
     expect(wb.isOpen.value).toBe(true)
+
+    wb.setFullWindow(true)
+    expect(wb.isFullWindow.value).toBe(true)
+    wb.toggleFullWindow()
+    expect(wb.isFullWindow.value).toBe(false)
   })
 
   it('useParleyCall provides initial reactive call state', () => {
@@ -123,11 +129,16 @@ describe('composables', () => {
     expect(call.isVideoOn.value).toBe(false)
     expect(call.isCameraAvailable.value).toBe(false)
     expect(call.isMicrophoneAvailable.value).toBe(false)
+    expect(call.canShareScreen.value).toBeDefined()
+    expect(call.isScreenShareStarting.value).toBe(false)
     expect(call.cameras.value).toEqual([])
     expect(call.microphones.value).toEqual([])
     expect(call.remoteWhiteboards.value).toEqual({})
     expect(call.participants.value).toEqual([])
     expect(call.participantCount.value).toBe(0)
+    expect(call.presenters.value).toEqual([])
+    expect(call.whiteboardPresenters.value).toEqual([])
+    expect(call.activePresentations.value).toEqual([])
     expect(call.phase.value).toBe('ended')
   })
 
@@ -139,6 +150,10 @@ describe('composables', () => {
     expect(parley.isLoadingMessages.value).toBe(false)
     expect(parley.draft.value).toBe('')
     expect(parley.unreadTotal.value).toBe(0)
+    expect(parley.uploadProgress.value).toBeInstanceOf(Map)
+    expect(parley.compressionProgress.value).toBeInstanceOf(Map)
+    expect(typeof parley.cancelSending).toBe('function')
+    expect(typeof parley.retryMessage).toBe('function')
 
     parley.selectConversation('channel-1')
     expect(parley.activeConversationId.value).toBe('channel-1')

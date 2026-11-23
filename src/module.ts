@@ -100,6 +100,7 @@ export type {
   StateKeys,
   StickyShape,
   TextShape,
+  ThemeMode,
   TrackType,
   TriangleShape,
   TurnConfig,

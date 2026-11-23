@@ -7,6 +7,7 @@ import { useCallStore } from '../parley'
 export function useParleyWhiteboard() {
   const callStore = useCallStore()
   const isOpen = ref(false)
+  const isFullWindow = ref(false)
 
   const isSharing = computed(() => callStore.session?.media.isWhiteboardSharing.value ?? false)
 
@@ -26,6 +27,14 @@ export function useParleyWhiteboard() {
     }
   }
 
+  const setFullWindow = (val: boolean) => {
+    isFullWindow.value = val
+  }
+
+  const toggleFullWindow = () => {
+    isFullWindow.value = !isFullWindow.value
+  }
+
   const startShare = async (stream: MediaStream) => {
     await callStore.session?.startWhiteboardShare(stream)
   }
@@ -39,10 +48,13 @@ export function useParleyWhiteboard() {
 
   return {
     isOpen,
+    isFullWindow,
     isSharing,
     open,
     close,
     toggle,
+    setFullWindow,
+    toggleFullWindow,
     startShare,
     stopShare,
     onStreamStart,

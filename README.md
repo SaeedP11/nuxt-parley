@@ -128,9 +128,9 @@ With `primitives: true`, `BIcon` (a Phosphor icon by name), `BEmojiPicker` and `
 
 | Name | What it is |
 | --- | --- |
-| `useParley()`, `useParleyChat()` | High-level composable for the active conversation, contact, messages, drafts, unread totals, sending messages, and chat actions. |
-| `useParleyCall()` | High-level composable for voice and video calls: reactive session, duration, controls (audio, video, flashlight, screen share, whiteboard share, camera flip), device availability (camera/microphone), participants, dedicated member media, and signaling observation. |
-| `useParleyWhiteboard()` | Composable for controlling whiteboard dialog visibility and syncing stream sharing with an active call session. |
+| `useParley()`, `useParleyChat()` | High-level composable for the active conversation, contact, messages, drafts, unread totals, sending messages, cancel sending, message retries, upload/compression progress, and chat actions. |
+| `useParleyCall()` | High-level composable for voice and video calls: reactive session, duration, controls (audio, video, flashlight, screen share, whiteboard share, camera flip), device availability (camera/microphone), participants, parallel presentations (`activePresentations`, `presenters`, `whiteboardPresenters`), dedicated member media, and signaling observation. |
+| `useParleyWhiteboard()` | Composable for controlling whiteboard dialog visibility, full-window toggle, and syncing stream sharing with an active call session. |
 | `useParleyMedia()` | Composable for downloading, caching, and retrieving media blobs, file sizes, and albums. |
 | `formatDuration(seconds)` | Formats duration in seconds to `mm:ss` or `hh:mm:ss`. |
 | `formatBytes(bytes)` | Formats byte numbers to human-readable `Bytes`, `KB`, `MB`, `GB`. |

@@ -1,6 +1,6 @@
 import type { ComputedRef, WritableComputedRef } from 'vue'
 import { computed } from 'vue'
-import type { Contact, Message, StateKeys } from 'vue-parley'
+import type { Contact, Message, StateKeys, UploadProgressEvent } from 'vue-parley'
 import { resetChat, useChatStore, useMessagesStore, useProfileStore } from '../parley'
 
 export interface UseParleyReturn {
@@ -15,6 +15,8 @@ export interface UseParleyReturn {
   typingUser: ComputedRef<string | null>
   contacts: ComputedRef<readonly Contact[]>
   unreadTotal: ComputedRef<number>
+  uploadProgress: ComputedRef<Map<string, UploadProgressEvent>>
+  compressionProgress: ComputedRef<Map<string, number>>
   selectConversation: (id: string | null) => void
   getContact: (id: string) => Contact | null
   addContact: (contact: Contact, filter?: StateKeys) => void
@@ -25,6 +27,8 @@ export interface UseParleyReturn {
   setDraft: (channelId: string, text: string) => void
   fetchMessages: (conversationId: string, page?: number) => Promise<void>
   sendMessage: (text: string) => Promise<void>
+  cancelSending: (messageId: string) => void
+  retryMessage: (messageOrId: Message | string) => void
   reset: () => Promise<void>
 }
 
@@ -81,6 +85,9 @@ export function useParley(): UseParleyReturn {
     return count
   })
 
+  const uploadProgress = computed(() => messagesStore.uploadProgress)
+  const compressionProgress = computed(() => messagesStore.compressionProgress)
+
   const selectConversation = (id: string | null) => {
     chatStore.setSelectedChat(id)
   }
@@ -134,6 +141,25 @@ export function useParley(): UseParleyReturn {
     await messagesStore.sendMessage([message])
   }
 
+  const cancelSending = (messageId: string) => {
+    messagesStore.cancelSending(messageId)
+  }
+
+  const retryMessage = (messageOrId: Message | string) => {
+    if (typeof messageOrId === 'string') {
+      const channel = activeConversationId.value
+      const list = channel
+        ? (messagesStore.messagesMap[channel] ?? [])
+        : Object.values(messagesStore.messagesMap).flat()
+      const msg = list.find((m: Message) => m.id === messageOrId)
+      if (msg) {
+        messagesStore.retryMessage(msg)
+      }
+    } else {
+      messagesStore.retryMessage(messageOrId)
+    }
+  }
+
   return {
     chatStore,
     messagesStore,
@@ -146,6 +172,8 @@ export function useParley(): UseParleyReturn {
     typingUser,
     contacts,
     unreadTotal,
+    uploadProgress,
+    compressionProgress,
     selectConversation,
     getContact,
     addContact,
@@ -156,6 +184,8 @@ export function useParley(): UseParleyReturn {
     setDraft,
     fetchMessages,
     sendMessage,
+    cancelSending,
+    retryMessage,
     reset: resetChat,
   }
 }
